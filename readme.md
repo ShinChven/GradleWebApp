@@ -1,7 +1,8 @@
 说明：<p>
-1、 这是一个使用Gradle 构建Struts2 + Springframework + hibernate JAVA Web 项目的简单DEMO。<p>
+1、 这是一个使用Gradle 构建Struts2 + Springframework + hibernate JAVA Web 项目的简单DEMO，<p>
+  &nbsp;  &nbsp;大家可以在这个基础上搭建和开发自己的S2SH应用。<p>
 2、 Gradle 是一个非常强大的构建系统。<p>
-  &nbsp;&nbsp;  在新的Android 工程构建系统中起着非常重要的作用，同样它也可以用于开发Java Web项目。<p>
+  &nbsp;&nbsp; 它在新的Android 工程构建系统中起着非常重要的作用，同样它也可以用于开发Java Web项目。<p>
 3、 在计算机中配置Gradle：<p>
     &nbsp;&nbsp;下载gradle： http://www.gradle.org/downloads。<p>
     &nbsp;&nbsp;配置系统环境变量 GRADLE_HOME 到下载到的gradle包解压出来的文件夹。<p>
