@@ -5,7 +5,7 @@
 3、 在计算机中配置Gradle：<p>
     &nbsp;&nbsp;下载gradle： http://www.gradle.org/downloads。<p>
     &nbsp;&nbsp;配置系统环境变量 GRADLE_HOME 到下载到的gradle包解压出来的文件夹。<p>
-4、 建议使用Intellij IDEA 开发，File - Open... 打开build.gradle 即可。<p>
+4、 建议使用Intellij IDEA 打开这个DEMO，File - Open... 打开build.gradle 即可。<p>
 5、 关于工程结构：<p>
   &nbsp;   一般你的工程结构需要是：<p>
   &nbsp;&nbsp;   src/main/java           -- java 代码<p>
