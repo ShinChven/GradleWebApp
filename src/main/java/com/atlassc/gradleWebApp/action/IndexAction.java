@@ -3,23 +3,25 @@ package com.atlassc.gradleWebApp.action;
 import com.opensymphony.xwork2.ActionSupport;
 import org.apache.struts2.convention.annotation.*;
 
-import java.util.logging.Level;
-import java.util.logging.Logger;
-
-/**
- * Created by ShinChven on 14/7/11.
- */
 @Action("index")
 @ParentPackage("basePackage")
 @Namespace("/")
-@Results({@Result(name = "success",location = "index.jsp")})
-public class IndexAction extends ActionSupport{
-    private Logger mIndexLogger;
+@Results({@Result(name = "success", location = "home.jsp")})
+public class IndexAction extends ActionSupport {
+
+    private String name="Gradle";
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
 
     @Override
     public String execute() throws Exception {
-        mIndexLogger = Logger.getLogger("IndexAction");
-        mIndexLogger.log(Level.ALL,"Welcome to Index Action");
+        System.out.println(name);
         return SUCCESS;
     }
 }
