@@ -6,4 +6,5 @@
 
 <struts>
     <package name="basePackage" extends="struts-default"></package>
+    <constant name="struts.convention.result.path" value="/"></constant>
 </struts>
