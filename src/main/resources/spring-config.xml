@@ -11,9 +11,9 @@
 
 
     <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource">
-        <property name="url" value="jdbc:mysql://localhost:3306/atlassc?useUnicode=true&amp;characterEncoding=utf-8&amp;autoReconnect=true&amp;failOverReadOnly=false"></property>
-        <property name="username" value="root"></property>
-        <property name="password" value="1234"></property>
+        <property name="url" value="jdbc:mysql://localhost:3306/databaseName?useUnicode=true&amp;characterEncoding=utf-8&amp;autoReconnect=true&amp;failOverReadOnly=false"></property>
+        <property name="username" value="username"></property>
+        <property name="password" value="password"></property>
         <property name="driverClassName" value="com.mysql.jdbc.Driver"></property>
     </bean>
 
@@ -24,7 +24,7 @@
 
         <property name="packagesToScan">
             <list>
-                <value>com.atlassc.gradleWebApp.entity</value>
+                <!--todo to add entity package for hibernate entity scanning-->
             </list>
         </property>
         <property name="hibernateProperties">

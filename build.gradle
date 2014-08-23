@@ -67,7 +67,7 @@ repositories {
         url "http://download.java.net/maven/2"
     }
     maven { url 'http://repo.spring.io/plugins-release' }
-    maven { url 'http://maven.oschina.net/content/groups/public/' }
+    //maven { url 'http://maven.oschina.net/content/groups/public/' }
 }
 
 /**
