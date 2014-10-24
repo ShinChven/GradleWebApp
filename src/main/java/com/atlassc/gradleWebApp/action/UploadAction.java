@@ -14,8 +14,8 @@ import java.io.PrintWriter;
 
 /**
  * 文件上传的Action，此Action 中将接收一个byte[] 数据包，其中包括json 对象和图片文件。</p>
- * bytes[0] 为json 对象的byte 数组长度</p>
- * json对象的数据位于bytes[1] - bytes[bytes[0]]</p>
+ * bytes[0-3] 为json 对象的byte 数组长度jsonBytesLength</p>
+ * json对象的数据位于bytes[4] - bytes[jsonBytesLength]</p>
  * 图片数据位于json对象之后的所有数据bytes[1+bytes[0]] - bytes[bytes.length]</p>
  * Created by ShinChven on 2014/10/22.
  */
@@ -50,15 +50,37 @@ public class UploadAction extends ActionSupport {
 
         // 拆解数据包，读取JSON
         byte[] bucket = baos.toByteArray();
-        byte jsonLengthByte = bucket[0];
-        byte[] jsonByte = new byte[jsonLengthByte];
-        System.arraycopy(bucket, 1, jsonByte, 0, jsonByte.length);
-        String json = new String(jsonByte, "UTF-8");
+
+
+//        byte jsonLengthByte = bucket[0];
+//        byte[] jsonByte = new byte[jsonLengthByte];
+//        System.arraycopy(bucket, 1, jsonByte, 0, jsonByte.length);
+//        String json = new String(jsonByte, "UTF-8");
+//        System.out.println(json);
+//
+//        int imageBytesLength = bucket.length - 1 - jsonByte.length;
+//        byte[] imgBytes = new byte[imageBytesLength];
+//        System.arraycopy(bucket, 1 + jsonLengthByte, imgBytes, 0, imageBytesLength);
+
+        byte[] jsonLengthBytes = new byte[4];
+        System.arraycopy(bucket, 0, jsonLengthBytes, 0, 4);
+        String jsonLengthStr = new String(jsonLengthBytes);
+        int jsonLength = Integer.parseInt(jsonLengthStr);
+        System.out.println("jsonLength:" + jsonLength);
+
+        byte[] jsonBytes = new byte[jsonLength];
+        System.arraycopy(bucket, 4, jsonBytes, 0, jsonLength);
+        String json = new String(jsonBytes, "UTF-8");
         System.out.println(json);
 
-        int imageBytesLength = bucket.length - 1 - jsonByte.length;
+        int imageBytesLength = bucket.length - jsonLengthBytes.length - jsonBytes.length;
         byte[] imgBytes = new byte[imageBytesLength];
-        System.arraycopy(bucket, 1 + jsonLengthByte, imgBytes, 0, imageBytesLength);
+        int srcPos = jsonLengthBytes.length + jsonBytes.length;
+        System.out.println("起点："+srcPos);
+        System.out.println("image 大小："+imageBytesLength);
+        System.out.println("数据包大小："+bucket.length);
+        System.arraycopy(bucket, srcPos, imgBytes, 0, imageBytesLength);
+
 
         // 保存图片文件
         FileOutputStream fos = new FileOutputStream(file);
