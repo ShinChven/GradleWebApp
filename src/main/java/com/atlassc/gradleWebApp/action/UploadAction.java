@@ -4,6 +4,7 @@ import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 import org.apache.struts2.ServletActionContext;
 import org.apache.struts2.convention.annotation.*;
+import org.json.JSONObject;
 
 import javax.servlet.ServletInputStream;
 import javax.servlet.http.HttpServletRequest;
@@ -37,8 +38,7 @@ public class UploadAction extends ActionSupport {
         // 保存路径
 //        String realPath = ServletActionContext.getServletContext().getRealPath(
 //                "/");
-        String realPath = "D:\\fileUpload.jpg";
-        File file = new File(realPath);
+
         ByteArrayOutputStream baos = new ByteArrayOutputStream();
         // 读取流
         byte[] b = new byte[1024 * 50]; //限制流的读取大小
@@ -70,15 +70,21 @@ public class UploadAction extends ActionSupport {
 
         byte[] jsonBytes = new byte[jsonLength];
         System.arraycopy(bucket, 4, jsonBytes, 0, jsonLength);
-        String json = new String(jsonBytes, "UTF-8");
-        System.out.println(json);
+        String jsonStr = new String(jsonBytes, "UTF-8");
+
+        JSONObject json = new JSONObject(jsonStr);
+        String type = json.getString("type");
+
+        String realPath = "D:\\"+String.valueOf(System.currentTimeMillis());
+        realPath += "." + type;
+        File file = new File(realPath);
 
         int imageBytesLength = bucket.length - jsonLengthBytes.length - jsonBytes.length;
         byte[] imgBytes = new byte[imageBytesLength];
         int srcPos = jsonLengthBytes.length + jsonBytes.length;
-        System.out.println("起点："+srcPos);
-        System.out.println("image 大小："+imageBytesLength);
-        System.out.println("数据包大小："+bucket.length);
+        System.out.println("起点：" + srcPos);
+        System.out.println("image 大小：" + imageBytesLength);
+        System.out.println("数据包大小：" + bucket.length);
         System.arraycopy(bucket, srcPos, imgBytes, 0, imageBytesLength);
 
 

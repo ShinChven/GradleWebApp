@@ -123,9 +123,7 @@ dependencies {
     compile 'jstl:jstl:1.2'
     compile 'taglibs:standard:1.1.2'
 
-    // compile jackson databind
-    compile 'com.fasterxml.jackson.core:jackson-databind:2.4.+'
-    compile 'com.fasterxml.jackson.dataformat:jackson-dataformat-xml:2.4.+'
+    compile 'org.json:json:20140107'
 
 }
 /**
