@@ -35,9 +35,6 @@ public class UploadAction extends ActionSupport {
         HttpServletRequest request = (HttpServletRequest) context
                 .get(ServletActionContext.HTTP_REQUEST);
         ServletInputStream in = request.getInputStream();
-        // 保存路径
-//        String realPath = ServletActionContext.getServletContext().getRealPath(
-//                "/");
 
         ByteArrayOutputStream baos = new ByteArrayOutputStream();
         // 读取流
@@ -51,17 +48,6 @@ public class UploadAction extends ActionSupport {
         // 拆解数据包，读取JSON
         byte[] bucket = baos.toByteArray();
 
-
-//        byte jsonLengthByte = bucket[0];
-//        byte[] jsonByte = new byte[jsonLengthByte];
-//        System.arraycopy(bucket, 1, jsonByte, 0, jsonByte.length);
-//        String json = new String(jsonByte, "UTF-8");
-//        System.out.println(json);
-//
-//        int imageBytesLength = bucket.length - 1 - jsonByte.length;
-//        byte[] imgBytes = new byte[imageBytesLength];
-//        System.arraycopy(bucket, 1 + jsonLengthByte, imgBytes, 0, imageBytesLength);
-
         byte[] jsonLengthBytes = new byte[4];
         System.arraycopy(bucket, 0, jsonLengthBytes, 0, 4);
         String jsonLengthStr = new String(jsonLengthBytes);
@@ -74,6 +60,11 @@ public class UploadAction extends ActionSupport {
 
         JSONObject json = new JSONObject(jsonStr);
         String type = json.getString("type");
+        System.out.println("json:"+json.toString());
+
+        //        保存路径
+//        String realPath = ServletActionContext.getServletContext().getRealPath(
+//                "/");
 
         String realPath = "D:\\"+String.valueOf(System.currentTimeMillis());
         realPath += "." + type;
