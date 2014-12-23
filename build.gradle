@@ -18,14 +18,14 @@
  */
 apply plugin: 'war'
 apply plugin: 'tomcat'
-apply plugin: 'java'
+//apply plugin: 'java'
 apply plugin: 'idea'
 
-version = '1.0'
+
 
 buildscript {
     repositories {
-        mavenCentral()
+        jcenter()
         maven {
             url "http://download.java.net/maven/2"
         }
@@ -44,7 +44,7 @@ configurations {
 
 repositories {
     flatDir { dirs "lib" }
-    mavenCentral()
+    jcenter()
 }
 
 /**
@@ -62,7 +62,7 @@ war {
  * 配置仓库
  */
 repositories {
-    mavenCentral()
+    jcenter()
     maven {
         url "http://download.java.net/maven/2"
     }
@@ -78,15 +78,15 @@ dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
 
     // compile tomcat
-    def tomcatVersion = '7.0.42'
-    tomcat "org.apache.tomcat.embed:tomcat-embed-core:${tomcatVersion}",
-            "org.apache.tomcat.embed:tomcat-embed-logging-juli:${tomcatVersion}"
-    tomcat("org.apache.tomcat.embed:tomcat-embed-jasper:${tomcatVersion}") {
-        exclude group: 'org.eclipse.jdt.core.compiler', module: 'ecj'
-    }
+//    def tomcatVersion = '7.0.42'
+//    tomcat "org.apache.tomcat.embed:tomcat-embed-core:${tomcatVersion}",
+//            "org.apache.tomcat.embed:tomcat-embed-logging-juli:${tomcatVersion}"
+//    tomcat("org.apache.tomcat.embed:tomcat-embed-jasper:${tomcatVersion}") {
+//        exclude group: 'org.eclipse.jdt.core.compiler', module: 'ecj'
+//    }
 
     // compile junit
-    testCompile group: 'junit', name: 'junit', version: '4.11'
+    //testCompile group: 'junit', name: 'junit', version: '4.11'
     compile 'junit:junit:4.11'
 
     // compile java ee 7
