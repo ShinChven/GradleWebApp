@@ -17,7 +17,7 @@
  * 加入所需要的插件
  */
 apply plugin: 'war'
-apply plugin: 'tomcat'
+//apply plugin: 'tomcat'
 //apply plugin: 'java'
 apply plugin: 'idea'
 
