@@ -26,15 +26,17 @@ apply plugin: 'idea'
 buildscript {
     repositories {
         jcenter()
-        maven {
-            url "http://download.java.net/maven/2"
-        }
-        maven { url 'http://repo.spring.io/plugins-release' }
     }
-
     dependencies {
-        classpath 'org.gradle.api.plugins:gradle-tomcat-plugin:0.9.8'
-        classpath 'org.springframework.build.gradle:propdeps-plugin:0.0.1'
+        classpath 'io.spring.gradle:dependency-management-plugin:0.3.0.RELEASE'
+    }
+}
+
+apply plugin: 'io.spring.dependency-management'
+
+dependencyManagement {
+    imports {
+        mavenBom 'io.spring.platform:platform-bom:1.1.0.RELEASE'
     }
 }
 
@@ -63,11 +65,6 @@ war {
  */
 repositories {
     jcenter()
-    maven {
-        url "http://download.java.net/maven/2"
-    }
-    maven { url 'http://repo.spring.io/plugins-release' }
-    //maven { url 'http://maven.oschina.net/content/groups/public/' }
 }
 
 /**
@@ -84,6 +81,7 @@ dependencies {
     compile 'javax:javaee-api:7.0'
 
     // compile springframework
+    compile 'org.springframework:spring-core'
 
 
     // data source
