@@ -1,6 +1,6 @@
 #使用Gradle 构建JavaWebApp
 Gradle是很强大的构建工具，不过如果你在天朝，你可能需要一个强大的网络环境。
-本项目不具备太大实战意义，只是探索性地使用Gradle 构建Java Web项目，本人自己也只是使用它当测试模板。
+本项目不具备太大实战意义，只是探索性地使用Gradle 构建Java Web项目，本人自己也只是使用它当学生和测试的模板。
 本项目还在不间断施工中，请多多包涵。
 如果在「食用」过程中发现Gradle build起来真TM恶心，建议赶紧回头使用Maven，Maven 在天朝使用确实更加顺畅。
 ##Gradle的基本结构
@@ -21,14 +21,14 @@ Good luck!
 你可以使用一些配置来定义War包的结构，比如：<p>
 ```groovy
 configurations {
-    moreLibs // moreLibs 配置 war 配置中需要用到
+    moreLibs // 配置该module 在构建时，既加载dependencies中的依赖，还加载「散装」的jar包
 }
 
 war {
     from '/src/main/webapp' // 指定WebRoot 路径
     webInf { from '/src/main/webapp/WEB-INF/' } // 指定 WEB-INF 文件夹路径.
     classpath fileTree('lib') // 指定 WEB-INF/lib 文件夹路径.
-    classpath configurations.moreLibs // 对 WEB-INF/lib 文件夹进行配置.
+    classpath configurations.moreLibs // build 「散装」的jar包
     webXml = file('/src/main/webapp/WEB-INF/web.xml') // WEB-INF/web.xml 文件路径
 }
 ```
