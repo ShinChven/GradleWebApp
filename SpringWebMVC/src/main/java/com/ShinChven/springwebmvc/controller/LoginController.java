@@ -11,9 +11,10 @@ import org.springframework.web.bind.annotation.RequestMethod;
  */
 @Controller
 public class LoginController {
-    @RequestMapping(value = "/login",method = RequestMethod.POST)
-    public String login(User user,Model model){
-        model.addAttribute("user",user);
+
+    @RequestMapping(value = "/login", method = RequestMethod.POST)
+    public String login(User user, Model model) {
+        model.addAttribute("user", user);
         return "main";
     }
 }
