@@ -17,7 +17,7 @@
  * 加入所需要的插件
  */
 apply plugin: 'war'
-//apply plugin: 'tomcat'
+apply plugin: "com.bmuschko.tomcat"
 apply plugin: 'java'
 apply plugin: 'idea'
 
@@ -26,9 +26,11 @@ buildscript {
         jcenter()
     }
     dependencies {
-
+        classpath "com.bmuschko:gradle-tomcat-plugin:2.0"
     }
 }
+
+
 
 
 
@@ -57,6 +59,26 @@ war {
  */
 repositories {
     jcenter()
+}
+
+tomcat {
+    httpPort = 8090
+    httpsPort = 8091
+    enableSSL = true
+
+    users {
+        user {
+            username = 'user1'
+            password = '123456'
+            roles = ['developers', 'admin']
+        }
+
+        user {
+            username = 'user2'
+            password = 'abcdef'
+            roles = ['manager']
+        }
+    }
 }
 
 /**
@@ -91,6 +113,14 @@ dependencies {
     compile 'mysql:mysql-connector-java:+'
 
     compile 'org.json:json:20140107'
+
+    // tomcat embed
+    def tomcatVersion = '7.0.11'
+    tomcat "org.apache.tomcat.embed:tomcat-embed-core:${tomcatVersion}",
+            "org.apache.tomcat.embed:tomcat-embed-logging-juli:${tomcatVersion}"
+    tomcat("org.apache.tomcat.embed:tomcat-embed-jasper:${tomcatVersion}") {
+        exclude group: 'org.eclipse.jdt.core.compiler', module: 'ecj'
+    }
 
 }
 /**
