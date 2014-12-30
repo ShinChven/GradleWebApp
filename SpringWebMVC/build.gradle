@@ -21,24 +21,16 @@ apply plugin: 'war'
 apply plugin: 'java'
 apply plugin: 'idea'
 
-
-
 buildscript {
     repositories {
         jcenter()
     }
     dependencies {
-        classpath 'io.spring.gradle:dependency-management-plugin:0.3.0.RELEASE'
+
     }
 }
 
-apply plugin: 'io.spring.dependency-management'
 
-dependencyManagement {
-    imports {
-        mavenBom 'io.spring.platform:platform-bom:1.1.0.RELEASE'
-    }
-}
 
 configurations {
     moreLibs
@@ -77,22 +69,18 @@ dependencies {
     // compile junit
     compile 'junit:junit:4.11'
 
-    // compile java ee 7
-    compile 'javax:javaee-api:7.0'
-
     // compile springframework
-    compile 'org.springframework:spring-core'
+    compile('org.springframework:spring-core:4.0.8.RELEASE')
+    compile 'org.springframework:spring-webmvc:4.0.8.RELEASE'
 
+    // thymeleaf:http://www.thymeleaf.org/
+    compile 'org.thymeleaf:thymeleaf:2.1.4.RELEASE'
+    compile 'org.thymeleaf:thymeleaf-spring4:2.1.4.RELEASE'
 
-    // data source
-    compile 'commons-dbcp:commons-dbcp:1.4'
+    compile 'commons-logging:commons-logging:1.1.3'
 
     // compile mysql connector
-    compile 'mysql:mysql-connector-java:5.1.+'
-
-    // compile jstl
-    compile 'jstl:jstl:1.2'
-    compile 'taglibs:standard:1.1.2'
+    compile 'mysql:mysql-connector-java:+'
 
     compile 'org.json:json:20140107'
 
