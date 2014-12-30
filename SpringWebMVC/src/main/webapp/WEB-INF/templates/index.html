@@ -6,5 +6,9 @@
 </head>
 <body>
 <p th:text="${hello}"></p>
+
+<form action="#" th:action="@{/hello.do}" method="post" th:object="${user}">
+
+</form>
 </body>
 </html>

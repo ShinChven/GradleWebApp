@@ -1,5 +1,6 @@
 package com.ShinChven.springwebmvc.controller;
 
+import com.ShinChven.springwebmvc.entity.User;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -12,8 +13,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 @Controller
 public class IndexController {
     @RequestMapping(value = "/hello",method = RequestMethod.GET)
-    public String hello(Model model){
-        model.addAttribute("hello","gradle，你好！");
+    public String hello(User user){
         return "index";
     }
 }
