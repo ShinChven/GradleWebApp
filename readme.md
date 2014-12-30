@@ -1,3 +1,13 @@
+#使用Gradle 构建JavaWebApp
+Gradle是很强大的构建工具，不过如果你在天朝，你可能需要一个强大的网络环境。本项目还在不间断施工中，请多多包涵。
+##SSH module
+这是一个Gradle 构建的Struts2 Hiberante4 Springframeworks4 应用，详细配置请查看其中的build.gradle 文件。该module基本已经填完坑，可以拉下来直接运行。<p>
+Good luck!
+##SpringWebMVC
+这是一个Gradle 构建的Spring webmvc 应用，详细情况请查看其中的build.gradle 文件，此坑尚未填完。
+
+
+-----------------------------------过时的分割线------------------------------------------------
 说明：<p>
 1、 这是一个使用Gradle 构建Struts2 + Springframework + hibernate JAVA Web 项目的简单DEMO，<p>
   &nbsp;  &nbsp;大家可以在这个基础上搭建和开发自己的S2SH应用。<p>
