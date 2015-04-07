@@ -129,9 +129,9 @@ dependencies {
 /**
  * 使用idea 插件配置下载Javadoc 和 源码
  */
-idea {
-    module {
-        downloadJavadoc = true
-        downloadSources = true
-    }
-}
+//idea {
+  //  module {
+    //    downloadJavadoc = true
+    //    downloadSources = true
+//    }
+//}
