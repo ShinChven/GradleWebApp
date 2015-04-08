@@ -15,7 +15,7 @@ Gradle项目中使用build.gradle 文件对项目进行构建：
 这是一个Gradle 构建的Struts2 Hiberante4 Springframeworks4 应用，详细配置请查看其中的build.gradle 文件。该module基本已经填完坑，可以拉下来直接运行。<p>
 Good luck!
 ##SpringWebMVC
-这是一个Gradle 构建的Spring webmvc 应用，详细情况请查看其中的build.gradle 文件，此坑尚未填完。
+请参考这个仓库：<a href="https://github.com/ShinChven/SpringApp">https://github.com/ShinChven/SpringApp</a>
 ##构建War 项目
 当你在module 的build.gradle中添加了war 插件（apply plugin: 'war'）时，IDE会识别该module 为Java Web项目，
 你可以使用一些配置来定义War包的结构，比如：<p>
